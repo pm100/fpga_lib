@@ -1,7 +1,7 @@
 
-`include "/work/fpga/lib/Binary_To_7Segment.v"
-`include "/work/fpga/lib/Demux_1_To_4.v"
-`include "/work/fpga/lib/counter.v"
+`include "../ice40/Binary_To_7Segment.v"
+`include "../ice40/Demux_1_To_4.v"
+`include "../ice40/counter.v"
 
 `ifndef io_lcd_
 `define io_lcd_ 1
