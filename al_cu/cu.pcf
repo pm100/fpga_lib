@@ -1,7 +1,7 @@
 # Clock
-set_io -nowarn clk P7
+set_io -nowarn CLK P7
 # Reset
-set_io -nowarn rst P8
+set_io -nowarn RST P8
 
 # Onboard LEDs, bottom to top
 set_io -nowarn LED[7] J11
