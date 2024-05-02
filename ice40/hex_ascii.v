@@ -18,7 +18,7 @@ endfunction
 function [7:0] f_Hex_To_ASCII;
   input [3:0] i_Hex;
   begin
-    if (i_Hex == 4'hA) f_Hex_To_ASCII = ASCII_"a";
+    if (i_Hex == 4'hA) f_Hex_To_ASCII = "a";
     else if (i_Hex == 4'hB) f_Hex_To_ASCII = "b";
     else if (i_Hex == 4'hC) f_Hex_To_ASCII = "c";
     else if (i_Hex == 4'hD) f_Hex_To_ASCII = "d";
