@@ -1,6 +1,6 @@
 # Clock
 set_io -nowarn CLK P7
-# Reset
+# Reset - normally high - low => reset
 set_io -nowarn RST P8
 
 # Onboard LEDs, bottom to top

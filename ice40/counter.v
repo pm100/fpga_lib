@@ -23,7 +23,7 @@ module counter #(
   reg [SIZE-1:0] r_old_value = 0;
   assign value = counter[SIZE+DIV-1:DIV];
 
-  localparam MAX_VALUE = {{TOP{1'b1}}, {DIV{1'b1}}};  // value when maxed out
+  localparam MAX_VALUE = {TOP{1'b1}}, {DIV{1'b1}}};  // value when maxed out
 
   always @(posedge clk) begin
     // set the output

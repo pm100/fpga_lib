@@ -17,7 +17,7 @@ module io_lcd (
     input [3:0] i_digit4,
     input i_show_digit4,
     output [3:0] o_select,
-    output [7:0] o_segment
+    output [6:0] o_segment
 );
 
   // select the digit to show
@@ -32,7 +32,7 @@ module io_lcd (
       .o_Data3(w_sel[3])
   );
 
-  wire w_sel[3:0];
+  wire [3:0] w_sel;
   wire [1:0] w_anode_mux;
   assign o_select[0] = ~(w_sel[0] & i_show_digit1);
   assign o_select[1] = ~(w_sel[1] & i_show_digit2);

@@ -14,16 +14,16 @@ module RAM_1Port #(
     parameter WIDTH = 16,
     parameter DEPTH = 256
 ) (
-    input                                   i_Clk,
+    input                          i_Clk,
     // Shared address for writes and reads
-    input               [$clog2(DEPTH)-1:0] i_Addr,
+    input      [$clog2(DEPTH)-1:0] i_Addr,
     // Write Interface
-    input                                   i_Wr_DV,
-    input               [        WIDTH-1:0] i_Wr_Data,
+    input                          i_Wr_DV,
+    input      [        WIDTH-1:0] i_Wr_Data,
     // Read Interface
-    input                                   i_Rd_En,
-    output          reg                     o_Rd_DV,
-    output /* reg*/     [        WIDTH-1:0] o_Rd_Data
+    input                          i_Rd_En,
+    output reg                     o_Rd_DV,
+    output reg [        WIDTH-1:0] o_Rd_Data
 );
 
   reg [WIDTH-1:0] r_Mem[DEPTH-1:0];
@@ -35,10 +35,10 @@ module RAM_1Port #(
     end
 
     // Handle reads from memory
-    //    o_Rd_Data <= r_Mem[i_Addr];
-    o_Rd_DV <= i_Rd_En;  // Generate DV pulse
+    o_Rd_Data <= r_Mem[i_Addr];
+    o_Rd_DV   <= i_Rd_En;  // Generate DV pulse
   end
-  assign o_Rd_Data = r_Mem[i_Addr];
+  //assign o_Rd_Data = r_Mem[i_Addr];
 
 
 endmodule
