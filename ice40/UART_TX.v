@@ -6,14 +6,12 @@
 // and no parity bit.  When transmit is complete o_Tx_done will be
 // driven high for one clock cycle.
 //
-// Set Parameter CLKS_PER_BIT as follows:
-// CLKS_PER_BIT = (Frequency of i_Clock)/(Frequency of UART)
-// Example: 25 MHz Clock, 115200 baud UART
-// (25000000)/(115200) = 217
+
 `ifndef UART_TX_
 `define UART_TX_ 1
 module UART_TX #(
-    parameter CLKS_PER_BIT = 217
+    parameter CLOCK_SPEED = 25_000_000,
+    parameter BAUD_RATE   = 115_200
 ) (
     input            i_Rst_L,
     input            i_Clock,
@@ -23,7 +21,7 @@ module UART_TX #(
     output reg       o_TX_Serial,
     output reg       o_TX_Done
 );
-
+  localparam CLKS_PER_BIT = CLOCK_SPEED / BAUD_RATE;
   localparam IDLE = 3'b000;
   localparam TX_START_BIT = 3'b001;
   localparam TX_DATA_BITS = 3'b010;

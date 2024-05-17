@@ -6,15 +6,13 @@
 //              stop bit, and no parity bit.  When receive is complete 
 //              o_RX_DV will be driven high for one clock cycle.
 // 
-// Parameters:  Set Parameter CLKS_PER_BIT as follows:
-//              CLKS_PER_BIT = (Frequency of i_Clock)/(Frequency of UART)
-//              Example: 25 MHz Clock, 115200 baud UART
-//              (25000000)/(115200) = 217
+
 //////////////////////////////////////////////////////////////////////////////
 `ifndef UART_RX_
 `define UART_RX_ 1
 module UART_RX #(
-    parameter CLKS_PER_BIT = 217
+    parameter CLOCK_SPEED = 25_000_000,
+    parameter BAUD_RATE   = 115_200
 ) (
     input            i_Rst_L,
     input            i_Clock,
@@ -22,7 +20,7 @@ module UART_RX #(
     output reg       o_RX_DV,
     output reg [7:0] o_RX_Byte
 );
-
+  localparam CLKS_PER_BIT = CLOCK_SPEED / BAUD_RATE;
   localparam IDLE = 3'b000;
   localparam RX_START_BIT = 3'b001;
   localparam RX_DATA_BITS = 3'b010;
